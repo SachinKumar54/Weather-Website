@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.svg">
+        <!--==================== ICONS ====================-->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <!-- ===== Custom CSS ===== -->
+        <link rel="stylesheet" type="text/css" href="assets/css/mystyle.css">
+
+        <title>Unique Weather Web</title>
+    </head>
+    <body>
+
+        <!--- Start Top Searchbar and Buttons -->
+        <section class="top" id="top">
+            <div class="container top_container">
+                <div class="top_search">
+                    <input type="text" placeholder="Enter your city" id="locationInput" class="top_search-input" required>
+                    <button class="top_search-btn" id="searchButton"><i class="uil uil-search"></i> <Span>Search</Span></button>
+                    <button class="top_search-btn" id="autoDetectButton"><i class="uil uil-location-point"></i> <span>Auto Detect-Location</span></button>
+                    <select id="unitSelect" name="type" class="top_select" required>
+                        <option disabled>Select One</option>
+                        <option value="metric" selected>Celsius</option>
+                        <option value="imperial">Fahrenheit</option>
+                    </select>
+                </div>
+                <div class="top_username">
+                    <p>Made with ❤️ by <a href="https://github.com/SachinKumar54" target="_blank">Sachin Kumar</a></p>
+                </div>
+            </div>
+        </section>
+         <!--- End Top Searchbar and Buttons -->
+
+        <main class="main">
+
+            <section class="weather">
+                <div class="container weather_container">
+
+                    <!-- start Current day weather info -->
+                    <div class="cd_fc">
+
+                        <div class="cd_fc_main-detailsDiv">
+                                <div class="cd_fc_main-details">
+                                    <div id="t_wi">
+                                        <p id="t_dt"></p>
+                                        <h2 id="t_cityname" class="t_cityname"></h2>
+                                        <p id="t_wtemp"></p>
+                                    </div>
+                                    <h1 id="t_wdesc"></h1>
+                                </div>
+                                <div>
+                                    <img src="" class="cd_fc-img" id="t_wimg" alt="fc_image"/>
+                                </div>    
+                        </div>
+
+
+                        <div class="cd_uch-fc">
+                            <p>Today's Forecast</p>
+                            <div class="cd_rhc-fc" id="t_hfcD">
+                               <!-- here display hourly weather info  -->
+                            </div>
+                        </div>
+
+                        <div class="cd_other-fcDetails">
+                            <div class="cd_other-fcTopC">
+                                <div><p>Today's Forecast</p></div>
+                                <div>
+                                    <button id="goBack" class="cd_other-fcDetailshidden">Go Back</button>
+                                    <button id="seeMore">See More</button>
+                                </div>
+                            </div>
+                            
+                            <div class="cd_other-fcDetailsDiv active">
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-temperature-half"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Feel like</span>
+                                        <p id="oreal_feel"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-wind"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Wind</span>
+                                        <p id="owind_speed"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-tear"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Chance of Rain</span>
+                                        <p id="orain_chance"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-raindrops-alt"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Humidity</span>
+                                        <p id="ouv_humidity"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cd_other-fcDetailsDiv">
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-temperature-plus"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Dew Point</span>
+                                        <p id="o_dewpoint"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-bright"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>UV Index</span>
+                                        <p id="o_uvindex"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-tachometer-fast"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Pressure</span>
+                                        <p id="o_pressure"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-eye"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Visibility</span>
+                                        <p id="o_visibility"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cd_other-fcDetailsDiv">
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-sun"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Sunrise</span>
+                                        <p id="o_sunrise"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-sunset"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Sunset</span>
+                                        <p id="o_sunset"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-temperature"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Max Temperature</span>
+                                        <p id="o_maxtemp"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_other-sfcDetails">
+                                    <div>
+                                        <i class="uil uil-temperature-empty"></i>
+                                    </div>
+                                    <div class="cd_other-fcDetailstext">
+                                        <span>Min Temperature</span>
+                                        <p id="o_mintemp"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- End Current day weather info -->
+
+                    <!-- start next fewday/hour weather info -->
+                    <div class="nextfew_dh-fc">
+
+                        <!-- start next fewday weather info-->
+                        <div class="nfd_fc">
+                            <p>Next Few Days Forecast</p>
+                            <div class="nfd_fc-div" id="t_nfdfcD">
+                                <!-- here display next few days forecast -->
+                            </div>
+                        </div>
+                        <!-- End next fewday weather info-->
+
+                        <!-- start Atmospheric pressure weather info-->
+                        <div class="cd_level">
+                            <p>Atmospheric pressure</p>
+
+                            <div class="cd_level-fc">
+                                <div class="cd_level-fcD">
+                                    <div>
+                                        <i class="uil uil-water"></i>
+                                    </div>
+                                    <div class="cd_level-fcDText">
+                                        <span>Sea Level</span>
+                                        <p id="sea_level"></p>
+                                    </div>
+                                </div>
+                                <div class="cd_level-fcD">
+                                    <div>
+                                        <i class="uil uil-mountains"></i>
+                                    </div>
+                                    <div class="cd_level-fcDText">
+                                        <span>Ground Level</span>
+                                        <p id="ground_level"></p>
+                                    </div>
+                                </div>
+                            </div>
+                              
+                        </div>
+                        <!-- End Atmospheric pressure weather info-->
+
+                    </div>
+                    <!-- End next fewday/hour weather info -->
+                    
+                    <!-- start current day more weather info/resorces used info -->
+                    <div class="cd_mwfc">
+
+                       <div class="cd_airfc-info">
+                          <div class="cd_airfc-header">
+                            <p>Today's Air Index Quality(in μg/m³)</p>
+                            <span id="cd_airfc-index"></span>
+                          </div>
+                          <div class="cd_airfc-type-info">
+
+                            <div class="cd_airfc-s-info">
+                                <div><img src="assets/img/a_co.png"></div>
+                                <div class="cd_airfc-stnv">
+                                    <p>Carbon monoxide</p>
+                                    <span id="cd_airfc-coIndex"></span>
+                                </div>
+                            </div>
+                            <div class="cd_airfc-s-info">
+                                <div><img src="assets/img/a_ozone.png"></div>
+                                <div class="cd_airfc-stnv">
+                                    <p>Ozone</p>
+                                    <span id="cd_airfc-o3Index"></span>
+                                </div>
+                            </div>
+                            <div class="cd_airfc-s-info">
+                                <div><img src="assets/img/a_pm2.5.png"></div>
+                                <div class="cd_airfc-stnv">
+                                    <p>PM2.5</p>
+                                    <span id="cd_airfc-pm25Index"></span>
+                                </div>
+                            </div>
+                            <div class="cd_airfc-s-info">
+                                <div><img src="assets/img/a_so2.png"></div>
+                                <div class="cd_airfc-stnv">
+                                    <p>Sulphur dioxide</p>
+                                    <span id="cd_airfc-so2Index"></span>
+                                </div>
+                            </div>
+                            <div class="cd_airfc-s-info">
+                                <div><img src="assets/img/a_no2.png"></div>
+                                <div class="cd_airfc-stnv">
+                                    <p>Nitrogen dioxide</p>
+                                    <span id="cd_airfc-no2Index"></span>
+                                </div>
+                            </div>
+                            <div class="cd_airfc-s-info">
+                                <div><img src="assets/img/a_nh3.png"></div>
+                                <div class="cd_airfc-stnv">
+                                    <p>Ammonia</p>
+                                    <span id="cd_airfc-nh3Index"></span>
+                                </div>
+                            </div>
+                            
+
+
+                          </div>
+
+                       </div>
+
+                       <div class="about">
+                        <ol type="1">
+                            <li>This is Weather website using pure HTML,HTML5,CSS and Javascript.</li>
+                            <li>Openweathermap api is used for fetching all weather information.</li>
+                            <li>Openweathermap link: <a href="https://openweathermap.org/" target="_blank">Click Here</a></li>
+                            <li>Features :
+                                <ol type="a" style="padding-left: 20px;">
+                                    <li>Find Weather of any location using searchbar</li>
+                                    <li>Auto detect location feature</li>
+                                    <li>Display Weather info. in Celcius or Fahrenheit</li>
+                                    <li>Display Weather information such as temperature,description,max temp.,min temp.,humidity,rain chance,
+                                        wind speed,visibility,next few 24 hour forecast,next few days forecast,sea level, ground level,Air index Quality and 
+                                    many more.</li>
+                                </ol>
+                            </li>
+                            <li>Design Inspiration : <a href="https://uizard.io/templates/web-app-templates/weather-web-app-dark/" target="_blank">Click Here</a></li>
+                            <li>Icon Used from <a href="https://iconscout.com/" target="_blank">Iconscout</a></li>
+                            <li>Image Used from <a href="https://www.flaticon.com/" target="_blank">Flaticon</a></li>
+                            <li>Made with <i class="uil uil-heart"></i> by <a href="https://uniquesachin.netlify.app/" target="_blank">Sachin Kumar</a></li>
+                          </ol>
+
+                          
+                       </div>
+                       
+                    </div>
+
+                    
+                    <!-- End current day more weather info/resorces used info -->
+
+                </div>
+            </section>
+
+            <div class="modal" id="errorModal"></div>
+
+        </main>
+
+       
+
+        <!--=========== SCRIPTS ===========-->
+    <script src="assets/js/main.js"></script>
+    </body>
+</html>    
+
+
+
+
+
